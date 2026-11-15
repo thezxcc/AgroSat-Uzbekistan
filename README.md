@@ -12,7 +12,7 @@
 
 **Real climate evidence · Clear uncertainty · Farmer-first design**
 
-[Explore the challenge](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/) · [View the 7-slide presentation](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf) · [Browse our sources](docs/DATA_SOURCES_AND_CREDITS.md)
+[Explore the challenge](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/) · [View the 7-slide presentation](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf) · [Browse our sources](docs/DATA_SOURCES_AND_CREDITS.md) · [How to run](QUICKSTART.md)
 
 </div>
 
@@ -20,21 +20,17 @@
 
 ![AgroSat website — NASA-informed farmer helper and original satellite context](docs/images/agrosat-home.png)
 
-## 🚀 Run it yourself — one command
+## 🚀 Run AgroSat in minutes
 
-**No NASA API key, account or external database required.** The repository includes the historical NASA data used by this prototype.
+**New here?** The full setup guide is on its own page: **[📖 Open the Quick Start Guide](QUICKSTART.md)**.
 
-| Your computer | What to run | Open in your browser |
+| Your computer | Fastest way to run | Open in browser |
 |---|---|---|
-| **Docker installed (Windows / macOS / Linux)** | `docker compose up --build` | **http://localhost:8080** |
-| **Windows, without Docker** | Double-click **`START_HERE.bat`** | **http://127.0.0.1:5173** |
-| **macOS / Linux, without Docker** | `python3 run.py` | **http://127.0.0.1:5173** |
+| **Docker** (Windows / macOS / Linux) | `docker compose up --build` | [localhost:8080](http://localhost:8080) |
+| **Windows without Docker** | Double-click **[`START_HERE.bat`](START_HERE.bat)** | [127.0.0.1:5173](http://127.0.0.1:5173) |
+| **macOS / Linux without Docker** | `python3 run.py` | [127.0.0.1:5173](http://127.0.0.1:5173) |
 
-For Docker, run the command in the directory you cloned. For native setup, install **Python 3.12+** and **Node.js 22.12+ / 24+** first; the starter will create an isolated Python environment and run `pip` and `npm ci` automatically. Initial installation needs internet; subsequent starts reuse installed dependencies. Press **Ctrl+C** to stop.
-
-**[Clone/download instructions, platform requirements and troubleshooting →](QUICKSTART.md)**
-
-> GitHub Pages by itself does not run FastAPI. The commands above start **both** the website and its scientific API. A publicly hosted demo needs a separate deployed API or a single-host deployment.
+The NASA dataset is included: **no NASA API key or database account needed**. For requirements, installation, troubleshooting and stopping the services, see **[QUICKSTART.md →](QUICKSTART.md)**.
 
 ## The idea
 
@@ -131,37 +127,6 @@ Published values are indicative and must be interpreted within their original sc
 | Responsive design · EN/RU/UZ · Light/dark | Validated REST endpoints · Source tracing | GitHub Actions · SHA-256 provenance |
 
 The backend is the **single scientific decision authority**. UI translations never change the underlying calculations.
-
-## Manual development setup (optional)
-
-**Most users should use the quick-start above**; the steps below are for developers who want to manage the two servers themselves.
-
-
-**Prerequisites:** Python 3.12+ and Node.js 22+.
-
-```powershell
-git clone https://github.com/thezxcc/AgroSat-Uzbekistan.git
-cd AgroSat-Uzbekistan
-
-py -m venv backend\.venv
-backend\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
-
-cd frontend
-npm.cmd ci
-cd ..
-
-.\start_local.ps1
-```
-
-Open **http://127.0.0.1:5173/** in the browser. Interactive API docs: **http://127.0.0.1:8000/docs**.
-
-**Run every local quality check** (with both servers running):
-
-```powershell
-.\check_all.ps1
-```
-
-The local gate includes **93 Python tests**, **1,128 localized-message checks**, TypeScript build/lint, scientific regressions, Chrome user journeys, responsive checks and a nested-hosting asset check. These are **local test results**, not evidence of public deployment, field effectiveness or official NASA judging status.
 
 ## Deployment notes
 
