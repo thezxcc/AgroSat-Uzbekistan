@@ -12,25 +12,40 @@
 
 **Real climate evidence · Clear uncertainty · Farmer-first design**
 
-[Explore the challenge](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/) · [View the 7-slide presentation](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf) · [Browse our sources](docs/DATA_SOURCES_AND_CREDITS.md) · [How to run](QUICKSTART.md)
+[![Tests and build](https://github.com/thezxcc/AgroSat-Uzbekistan/actions/workflows/ci.yml/badge.svg)](https://github.com/thezxcc/AgroSat-Uzbekistan/actions/workflows/ci.yml)
+
+[Explore the challenge](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/) · [View the 7-slide presentation](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf) · [Browse our sources](docs/DATA_SOURCES_AND_CREDITS.md) · [How to run](QUICKSTART.md) · [Judge guide](JUDGES_GUIDE.md)
 
 </div>
 
 ---
 
+## For NASA Space Apps judges — start here
+
+**AgroSat in one sentence:** A multilingual, evidence-first tool that helps farmers in Khorezm, Uzbekistan compare three wheat–cotton crop rotation scenarios using real NASA climate records, scientific references and their own water/soil constraints.
+
+| **1. Understand** | **2. Run** | **3. Verify** |
+|:---|:---|:---|
+| [7-slide project presentation](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf) | [One-command setup](QUICKSTART.md) | [2-minute jury walkthrough](JUDGES_GUIDE.md) |
+| [Where the NASA data came from](docs/DATA_SOURCES_AND_CREDITS.md) | [Windows one-click launcher](START_HERE.bat) | [Automated checks](https://github.com/thezxcc/AgroSat-Uzbekistan/actions/workflows/ci.yml) |
+
+### Launch the complete app with one command
+
+After **[cloning or downloading the repository](QUICKSTART.md)**, open a terminal **in the project folder** (Docker with Compose v2 required):
+
+```bash
+docker compose up --build
+```
+
+Then open **http://localhost:8080**. This starts **both the React website and the FastAPI/NASA-data service**. No API key, database setup or .env file is required. The first build downloads dependencies. Stop with **Ctrl+C**.
+
+**No Docker?** Windows: double-click [`START_HERE.bat`](START_HERE.bat). macOS/Linux: `python3 run.py` (Python 3.12+ and Node.js 22.12+/24+ required). See the **[complete Quick Start Guide](QUICKSTART.md)**.
+
+**What to try in 2 minutes:** open the site → answer the three field questions → compare **A / B / C** → open the evidence and NASA climate data. For exactly what to look for, see the [jury walkthrough](JUDGES_GUIDE.md).
+
+> **Scope:** This is a working educational research prototype, **not** a field-validated yield or water-savings prediction. No hosted public demo is claimed; the repository contains a reproducible local launch and its underlying NASA data.
+
 ![AgroSat website — NASA-informed farmer helper and original satellite context](docs/images/agrosat-home.png)
-
-## 🚀 Run AgroSat in minutes
-
-**New here?** The full setup guide is on its own page: **[📖 Open the Quick Start Guide](QUICKSTART.md)**.
-
-| Your computer | Fastest way to run | Open in browser |
-|---|---|---|
-| **Docker** (Windows / macOS / Linux) | `docker compose up --build` | [localhost:8080](http://localhost:8080) |
-| **Windows without Docker** | Double-click **[`START_HERE.bat`](START_HERE.bat)** | [127.0.0.1:5173](http://127.0.0.1:5173) |
-| **macOS / Linux without Docker** | `python3 run.py` | [127.0.0.1:5173](http://127.0.0.1:5173) |
-
-The NASA dataset is included: **no NASA API key or database account needed**. For requirements, installation, troubleshooting and stopping the services, see **[QUICKSTART.md →](QUICKSTART.md)**.
 
 ## The idea
 
