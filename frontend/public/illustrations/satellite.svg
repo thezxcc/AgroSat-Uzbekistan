@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" aria-hidden="true"><defs>
+ <linearGradient id="leaf" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#b7db83"/><stop offset=".55" stop-color="#6ead69"/><stop offset="1" stop-color="#3e8057"/></linearGradient>
+ <linearGradient id="grain" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2bd"/><stop offset=".6" stop-color="#e9ba5c"/><stop offset="1" stop-color="#ba8439"/></linearGradient>
+ <radialGradient id="cotton"><stop stop-color="#fffefa"/><stop offset=".7" stop-color="#f5f0db"/><stop offset="1" stop-color="#d5cdae"/></radialGradient>
+ <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c5a580"/><stop offset="1" stop-color="#91714e"/></linearGradient>
+ </defs><ellipse cx="90" cy="121" rx="77" ry="8" fill="#95b394" opacity=".20"/><g transform="translate(90 60) rotate(-19)">
+ <rect x="-22" y="-15" width="44" height="30" rx="5" fill="#d8e5dd" stroke="#507d79" stroke-width="2"/>
+ <rect x="-63" y="-21" width="37" height="42" rx="2" fill="#407b9e" stroke="#b6d9df" stroke-width="2"/>
+ <rect x="26" y="-21" width="37" height="42" rx="2" fill="#407b9e" stroke="#b6d9df" stroke-width="2"/>
+ <path d="M-50-20v40M-38-20v40M38-20v40M50-20v40M-62-7h36M26-7h36M-62 7h36M26 7h36" stroke="#b2d3e0" stroke-width="1.2"/>
+ <circle r="9" fill="#60a393"/><circle r="4" fill="#f1efd5"/>
+ </g><path d="M28 99Q87 16 157 93" fill="none" stroke="#86b3a4" stroke-width="2" stroke-dasharray="4 7"/>
+ <path d="M104 118q-6-21 14-22q9-15 21-5q18-1 17 15q19 2 15 14Z" fill="#dfece8"/></svg>

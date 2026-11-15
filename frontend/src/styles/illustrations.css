@@ -1,0 +1,60 @@
+/* AgroSat editorial crop illustrations. Visuals are explanatory artwork, never NASA measurements.
+   This layer does not change the layout, information architecture or calculations. */
+.spotlight-card{position:relative;isolation:isolate;overflow:hidden}
+.spotlight-card::after{
+ content:"";position:absolute;bottom:57px;right:7px;width:112px;height:96px;
+ background-repeat:no-repeat;background-position:center;background-size:contain;
+ pointer-events:none;opacity:.92;z-index:0;
+ filter:drop-shadow(0 5px 5px rgba(68,88,46,.08));
+}
+.spotlight-A::after{background-image:url('/illustrations/rotation-a.svg')}
+.spotlight-B::after{background-image:url('/illustrations/rotation-b.svg')}
+.spotlight-C::after{background-image:url('/illustrations/rotation-c.svg')}
+.spotlight-card>*{position:relative;z-index:1}
+.spotlight-card .spotlight-caution,.spotlight-card .spotlight-evidence{padding-right:102px;min-height:70px}
+.spotlight-card .spotlight-detail{max-width:100%}
+.spotlight-card .spotlight-option,.spotlight-card h3{padding-right:4px}
+
+.climate-header h2::after{
+ content:"";display:inline-block;width:66px;height:43px;margin-left:12px;vertical-align:middle;
+ background:url('/illustrations/satellite.svg') center / contain no-repeat;
+ pointer-events:none;opacity:.88;
+}
+.chart-title h3::after{
+ content:"";display:inline-block;width:56px;height:43px;margin-left:10px;vertical-align:middle;
+ background:url('/illustrations/rainfall.svg') center / contain no-repeat;
+ pointer-events:none;opacity:.86;
+}
+.metric{position:relative;overflow:hidden}
+.metric::after{
+ content:"";position:absolute;right:7px;bottom:8px;width:72px;height:64px;
+ background-position:center;background-size:contain;background-repeat:no-repeat;
+ opacity:.35;pointer-events:none;
+}
+.metric-water::after{background-image:url('/illustrations/rainfall.svg')}
+.metric-heat::after{background-image:url('/illustrations/rotation-a.svg')}
+.metric-frost::after{background-image:url('/illustrations/satellite.svg')}
+.metric .metric-head,.metric .metric-value,.metric .metric-foot{position:relative;z-index:1}
+.easy-next{position:relative;isolation:isolate;overflow:hidden}
+.easy-next::after{
+ content:"";position:absolute;right:13px;top:6px;width:73px;height:72px;
+ background:url('/illustrations/farmer-next-step.svg') center / contain no-repeat;
+ opacity:.32;pointer-events:none;z-index:0;
+}
+.easy-next>*{position:relative;z-index:1}
+:root[data-theme="dark"] .spotlight-card::after{opacity:.73;filter:drop-shadow(0 4px 6px rgba(0,0,0,.16))}
+:root[data-theme="dark"] .metric::after{opacity:.20}
+:root[data-theme="dark"] .easy-next::after{opacity:.18}
+@media(max-width:1350px) and (min-width:830px){
+ .spotlight-card::after{width:84px;height:76px;bottom:55px;right:5px}
+ .spotlight-card .spotlight-caution,.spotlight-card .spotlight-evidence{padding-right:76px}
+}
+@media(max-width:500px){
+ .spotlight-card::after{width:80px;height:73px;bottom:56px}
+ .spotlight-card .spotlight-caution,.spotlight-card .spotlight-evidence{padding-right:76px}
+ .climate-header h2::after{width:45px;height:34px;margin-left:5px}
+ .chart-title h3::after{width:45px;height:34px;margin-left:4px}
+ .metric::after{width:55px;height:48px;opacity:.21}
+ .easy-next::after{width:50px;height:50px;opacity:.2}
+}
+@media(prefers-reduced-motion:reduce){.spotlight-card{transition:none}}

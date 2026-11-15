@@ -1,0 +1,25 @@
+
+/* Crop bibliography: one explanatory image per plant, never overlay the text or source citations. */
+.crop-reference{overflow:hidden}
+.crop-reference-content{
+  display:grid;grid-template-columns:minmax(110px,27%) minmax(0,1fr);
+  align-items:start;column-gap:15px;margin-top:10px;
+}
+.crop-reference-illustration{display:block;width:100%;max-width:175px;height:auto;aspect-ratio:180/130;
+  object-fit:contain;justify-self:center;align-self:start;margin-top:13px;filter:drop-shadow(0 5px 5px rgba(49,85,45,.09));
+}
+.crop-reference-details{min-width:0}
+.crop-reference-details dl{margin-top:0}
+.crop-reference-details .crop-source{overflow-wrap:anywhere}
+:root[data-theme="dark"] .crop-reference-illustration{filter:drop-shadow(0 5px 6px rgba(0,0,0,.2))}
+@media(max-width:1300px) and (min-width:851px){
+ .crop-reference-content{grid-template-columns:100px minmax(0,1fr);gap:10px}
+}
+@media(max-width:1100px) and (min-width:851px){
+ .crop-reference-content{grid-template-columns:1fr}
+ .crop-reference-illustration{margin:0 auto 8px;max-width:122px}
+}
+@media(max-width:620px){
+ .crop-reference-content{grid-template-columns:1fr;gap:8px}
+ .crop-reference-illustration{max-width:144px;margin:3px auto 10px}
+}

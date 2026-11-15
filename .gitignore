@@ -1,0 +1,21 @@
+# Local research backups and private uploads
+research/
+*.zip
+*.7z
+# Generated environments and output
+backend/.venv/
+backend/**/__pycache__/
+backend/.pytest_cache/
+backend/**/*.pyc
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+artifacts/
+# Editor / secrets
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

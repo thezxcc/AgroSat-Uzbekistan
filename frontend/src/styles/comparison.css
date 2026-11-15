@@ -1,0 +1,44 @@
+/* Qualitative A/B/C matrix — no invented rank, yield or NDVI score */
+.comparison-matrix {border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  padding:16px;margin:0 0 15px;}
+.matrix-heading {display:flex;align-items:flex-start;gap:11px;margin-bottom:14px;}
+.matrix-icon {width:35px;height:35px;display:grid;place-items:center;color:var(--accent);
+  background:var(--accent-soft);border-radius:10px;flex:none;}
+.matrix-heading h3 {margin:1px 0 5px;font-size:14px;color:var(--heading);}
+.matrix-heading p {margin:0;font-size:11px;line-height:1.55;color:var(--muted);}
+.matrix-scroll {max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px;}
+.matrix-table {border-collapse:collapse;table-layout:auto;width:100%;min-width:490px;text-align:left;}
+.matrix-table th,.matrix-table td {padding:11px 10px;border-bottom:1px solid var(--line);}
+.matrix-table thead {background:var(--surface-2);}
+.matrix-table thead th {font-size:10px;font-weight:800;color:var(--muted);}
+.matrix-table tr:last-child th,.matrix-table tr:last-child td {border-bottom:0;}
+.matrix-table tbody th {font-size:11px;line-height:1.5;color:var(--heading);font-weight:650;min-width:132px;}
+.matrix-table tbody td {text-align:center;}
+.matrix-table thead th:not(:first-child) {text-align:center;}
+.matrix-letter {display:inline-grid;place-items:center;width:25px;height:25px;background:var(--accent-soft);
+  border:1px solid var(--line);border-radius:7px;color:var(--accent);font-size:12px;}
+.matrix-state {display:inline-flex;justify-content:center;align-items:center;min-width:87px;
+  padding:5px 6px;border-radius:6px;font-size:10px;line-height:1.4;font-weight:750;text-align:center;
+  background:var(--status-bg);color:var(--status-text);}
+.matrix-state.unknown {background:var(--warning-bg);color:var(--warning-text);}
+.matrix-state.risk {background:var(--risk-bg);color:var(--risk-text);}
+.matrix-caption {display:flex;gap:7px;align-items:flex-start;margin:12px 0 0;font-size:10px;
+  line-height:1.6;color:var(--muted);}
+.matrix-caption svg {flex:none;margin-top:1px;}
+
+/* Phase 5 — explain the scientific basis of each matrix state on tap/keyboard. */
+.matrix-cell {display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;}
+.matrix-why {width:100%;max-width:250px;text-align:left;}
+.matrix-why>summary {display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;
+  min-height:29px;border-radius:6px;color:var(--accent);font-weight:750;font-size:11px;
+  padding:4px 6px;list-style:none;user-select:none;}
+.matrix-why>summary::-webkit-details-marker {display:none;}
+.matrix-why>summary:hover,.matrix-why[open]>summary {background:var(--accent-soft);}
+.matrix-why>summary:focus-visible {outline:2px solid var(--accent);outline-offset:2px;}
+.matrix-why-content {background:var(--surface-2);border:1px solid var(--line);
+  border-radius:8px;padding:10px;overflow-wrap:anywhere;line-height:1.5;}
+.matrix-why-content strong {display:block;font-size:11px;color:var(--heading);margin-bottom:3px;}
+.matrix-why-content p {font-size:11px;color:var(--text);font-weight:400;margin:0 0 9px;}
+.matrix-why-content small {display:block;font-size:10px;color:var(--muted);line-height:1.45;}
+.matrix-table:has(.matrix-why[open]) {table-layout:fixed;min-width:690px;}
+@media(max-width:630px) {.matrix-why>summary{font-size:12px;min-height:34px;}}

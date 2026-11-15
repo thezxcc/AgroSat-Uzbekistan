@@ -1,0 +1,35 @@
+{
+  "project": "AgroSat Uzbekistan",
+  "region": "Urgench regional point, Khorezm, Uzbekistan",
+  "point": {
+    "lat": 41.55,
+    "long": 60.62
+  },
+  "dates": {
+    "from": "2000-01-01",
+    "to": "2025-12-31",
+    "expected_days": 9497
+  },
+  "note": "Source files are unchanged NASA POWER point API responses; GPM/IMERG precipitation is an IMERG-derived product accessed via NASA POWER. Grid points are not farm-level observations.",
+  "files": [
+    {
+      "filename": "NASA_IMERG_Urgench_2000_2025_DAILY_SOURCE.json",
+      "variable": "IMERG_PRECTOT",
+      "unit": "mm/day",
+      "sha256": "44d87290e75fb6a04e4869b40323741957178df3792ab9979eec91f0d04e98af",
+      "source": "https://power.larc.nasa.gov/",
+      "mission": "https://gpm.nasa.gov/data/imerg"
+    },
+    {
+      "filename": "NASA_POWER_TEMPERATURE_Urgench_2000_2025_DAILY_SOURCE.json",
+      "variable": [
+        "T2M",
+        "T2M_MAX",
+        "T2M_MIN"
+      ],
+      "unit": "degrees Celsius",
+      "sha256": "052a36f708949ba5ba8177eae7852709b0e0384616336a86e7011daca255aca3",
+      "source": "https://power.larc.nasa.gov/"
+    }
+  ]
+}
