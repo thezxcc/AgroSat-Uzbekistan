@@ -1,5 +1,5 @@
 # NASA Space Apps 2026 — AgroSat Uzbekistan: Project Submission Draft (ENGLISH)
-**Status (15 Nov 2026): LOCAL APP/SLIDES VERIFIED; PUBLIC HOSTING AND NASA SUBMISSION NOT CONFIRMED. Replace [PUBLIC ...] placeholders BEFORE submission.**
+**Status (15 Nov 2026): PUBLIC GITHUB SOURCE AND SEVEN-SLIDE PDF VERIFIED; ONLINE APPLICATION HOSTING AND OFFICIAL NASA SUBMISSION NOT CONFIRMED.**
 Challenge: Field Shift: Adapting Farms with NASA Data.
 Event: Universal Event. Confirm the two actual registered participants appear in the SAME event and team, with required guardian registration for any under-18 participant. Do NOT publish minor names, voices or identifiable photographs in the demo slides.
 
@@ -41,11 +41,13 @@ The software can load and process real NASA climate files, explain historical te
 ## Limits and next research
 This is an evidence-limited educational decision support prototype, not an agronomic advisory guarantee. Before a field recommendation, obtain local variety information, actual sowing/harvest dates, irrigation timing and volume, laboratory ECe/pH and measured soil conditions. A future QA-checked MODIS MOD13Q1 / Landsat surface-reflectance NDVI analysis is possible, but has not been performed on the existing NASA GIBS images.
 
-## Project links — REPLACE BEFORE SUBMISSION
-- Live public application: [PUBLIC DEMO HTTPS URL]
-- Public project/source code: [PUBLIC REPOSITORY OR FILE URL]
-- Seven-slide English demonstration: [PUBLIC SLIDE URL]
-All links must work in a private/incognito browser without login or access requests.
+## Public project and demonstration links
+- Public source / reproducible project: https://github.com/thezxcc/AgroSat-Uzbekistan
+- Seven-slide English PDF demonstration: https://github.com/thezxcc/AgroSat-Uzbekistan/blob/main/presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf
+- Full setup instructions: https://github.com/thezxcc/AgroSat-Uzbekistan/blob/main/QUICKSTART.md
+- Hosted public application: **not deployed**; do not claim a live HTTPS application URL.
+
+The project repository and seven-slide PDF are publicly accessible without login. A separate hosted application was not required by the screenshots of the submission form, which accept source repositories for the final project and a public slide PDF for the demo. The team's NASA submission itself still requires independent confirmation.
 
 ## AI disclosure (be precise)
 OpenAI ChatGPT assisted research organization, source reconciliation, Python/FastAPI and React/TypeScript code drafting and review, translation drafts, test design, documentation and slide scripting. The application contains **no generative AI model, inference service or automated farm prediction**, and all NASA climate values originate in the stored NASA JSON files. Human team participants are responsible for source verification, testing, project design, decisions and final submission. Screenshots and NASA GIBS maps shown in the demonstration are not generated scientific measurements.

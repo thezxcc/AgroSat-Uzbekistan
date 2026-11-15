@@ -159,7 +159,8 @@ See [deployment checklist](DEPLOYMENT_CHECKLIST.md) and [optional Render backend
 - **[Seven-slide English NASA presentation (PDF)](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf)**
 - **[Editable PowerPoint](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pptx)**
 - **[Methodology and scientific traceability](docs/SOURCE_TRACEABILITY.md)**
-- **[Code / scientific audit](docs/COMPLETE_NASA_CODE_COMPLIANCE_AUDIT_20261115_RU.md)**
+- **[NASA science and code compliance review](docs/NASA_CODE_AND_SCIENCE_AUDIT_EN.md)**
+- **[English user guide](docs/AGROSAT_USER_GUIDE_EN.md)**
 
 ## Responsible use and attribution
 

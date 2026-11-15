@@ -1,6 +1,8 @@
 # AgroSat Uzbekistan — final local readiness and competition gates
 Date: 2026-11-15 (Asia/Tashkent). Project: D:\AgroSat.
 
+> **Historical pre-publication checkpoint.** The GitHub repository and seven-slide PDF were published and verified later on 15 November 2026; see the [current English technical audit](NASA_CODE_AND_SCIENCE_AUDIT_EN.md). This earlier log is retained for historical traceability. The NASA Team Project Tab submission has not been independently verified.
+
 ## Verified statuses
 - Stage 1 — crop calendar and scientific safety: PASS, automated local tests.
 - Stage 2 — FAO/ICARDA crop evidence and qualifiers: PASS, primary-source checks.

@@ -3,7 +3,7 @@
 Date: 15 November 2026. Local project: D:\AgroSat.
 
 ## User issue addressed
-The comparison matrix previously showed "Not known yet" / "Пока неизвестно" / "Hozircha noma’lum" without visible explanations (only a mouse hover tooltip). Touch and keyboard users could not reliably see why a status was unknown.
+The comparison matrix previously showed "Not known yet" and the equivalent Russian/Uzbek translations without visible explanations (only a mouse hover tooltip). Touch and keyboard users could not reliably see why a status was unknown.
 
 ## Changes
 - Each of 18 A/B/C-by-factor cells now offers a native keyboard- and touch-accessible "Why?" expander.

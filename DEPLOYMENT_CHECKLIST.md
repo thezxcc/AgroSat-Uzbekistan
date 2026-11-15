@@ -1,5 +1,7 @@
 # Deployment and NASA submission checklist
 
+**Status update (15 Nov 2026):** Source repository, documentation, slides and GitHub Actions are public and verified. A hosted HTTPS app and the official NASA Project Tab **Submitted** state are not verified. [Current audit](docs/NASA_CODE_AND_SCIENCE_AUDIT_EN.md).
+
 ## Local readiness
 - [x] Original NASA datasets copied from research archive, 2000–2025.
 - [x] Backend pytest and live HTTP API smoke tests.
@@ -8,9 +10,9 @@
 - [ ] Student reviews every claim and tests in her browser.
 
 ## GitHub
-- [ ] Create a public GitHub repository and set origin.
-- [ ] Push only project code and public NASA data; research/ and archives are gitignored.
-- [ ] Confirm GitHub Actions CI is green.
+- [x] Create a public GitHub repository and set origin.
+- [x] Push only project code and public NASA data; research/ and archives are gitignored.
+- [x] Confirm GitHub Actions CI is green.
 - [ ] Decide frontend hosting (GitHub Pages) and backend hosting (Render or another FastAPI host).
 - [ ] Set `VITE_BASE_PATH=/REPO_NAME/` for GitHub Pages if needed.
 - [ ] Set `VITE_API_URL=https://API_HOST` when building frontend.
@@ -22,7 +24,7 @@
 
 ## NASA project submission
 - [ ] Ensure challenge entry includes a source from official Field Shift NASA Resources (GPM/IMERG and POWER verified from official screenshot).
-- [ ] Add public source repository, functional demo link, and explanation.
+- [ ] Add the public source repository, the seven-slide English demo PDF link, and a detailed explanation in the NASA Project Tab.
 - [ ] List data sources, scientific method, unknown inputs, limitations, and AI-assisted coding disclosure.
 - [ ] Review no trademark/logo misuse or private information.
 - [ ] Verify the entry's actual `SUBMITTED` status before the deadline.
