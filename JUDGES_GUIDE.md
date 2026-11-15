@@ -1,7 +1,9 @@
 # NASA Space Apps judges: AgroSat in 2 minutes
 
-**Challenge:** [Field Shift: Adapting Farms with NASA Data](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/)  
-**Pilot region:** Khorezm, Uzbekistan — regional climate point near Urgench (41.55° N, 60.62° E).  
+**Challenge:** [Field Shift: Adapting Farms with NASA Data](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/)
+
+**Pilot region:** Khorezm, Uzbekistan — regional climate point near Urgench (41.55° N, 60.62° E).
+
 **Goal:** Help a farmer explore constraints when choosing what to grow after wheat, without presenting invented yield or water-savings estimates.
 
 ## 1. Launch it (one command)
