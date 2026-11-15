@@ -1,200 +1,181 @@
-# AgroSat Uzbekistan — NASA Space Apps 2026
+<div align="center">
 
-**Challenge:** [Field Shift: Adapting Farms with NASA Data](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/)
+# 🌱 AgroSat Uzbekistan
 
-AgroSat is an educational, explainable crop rotation comparison prototype for a pilot climate point near Urgench, Khorezm (41.55°N, 60.62°E). It uses **authentic NASA GPM/IMERG and POWER series** with farmer-entered constraints; no embedded generative AI is used.
+### Smarter crop rotation decisions, grounded in NASA Earth observations.
 
-## Architecture
+**NASA Space Apps Challenge 2026 · Field Shift: Adapting Farms with NASA Data**
 
+[![Challenge](https://img.shields.io/badge/NASA_Space_Apps-2026-175d4f?style=for-the-badge)](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/)
+![Region](https://img.shields.io/badge/Pilot-Khorezm%2C_Uzbekistan-36886d?style=for-the-badge)
+![Languages](https://img.shields.io/badge/Languages-EN_%7C_RU_%7C_UZ-7cbf94?style=for-the-badge)
+
+**Real climate evidence · Clear uncertainty · Farmer-first design**
+
+[Explore the challenge](https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/) · [View the 7-slide presentation](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf) · [Browse our sources](docs/DATA_SOURCES_AND_CREDITS.md)
+
+</div>
+
+---
+
+![AgroSat website — NASA-informed farmer helper and original satellite context](docs/images/agrosat-home.png)
+
+## The idea
+
+**What should a farmer grow after harvesting wheat?**
+
+In Khorezm, Uzbekistan, that decision depends on much more than the season. Irrigation water may be limited, soils may be saline, and an additional crop needs enough time before the next planting.
+
+**AgroSat** is an educational decision-support prototype that combines **26 years of NASA climate history**, regional crop research and information provided by the farmer. Instead of making an unjustified recommendation, it helps users understand **what might work, what could go wrong and what to check next**.
+
+> **Our principle:** Satellite data can explain regional climate conditions. It cannot tell us how much canal water reached one field or replace a laboratory soil test.
+
+## Explore three pathways
+
+| | Example sequence | What the prototype investigates |
+|:--:|---|---|
+| **A** | Wheat → fallow → cotton | Illustrative reference scenario; **not** a claim about the farmer's actual rotation |
+| **B** | Wheat → mung bean → cotton | Potential extra crop, conditional on irrigation and a feasible growing season |
+| **C** | Wheat → mung bean → winter pea green manure → cotton | Added soil-management stage with **additional** water, labour and seasonal constraints |
+
+![Three explained crop rotation scenarios with grounded advantages and warnings](docs/images/agrosat-rotations.png)
+
+The three options are **research scenarios**, not a ranked list of guaranteed outcomes. They are not presented as three measured treatments from a single trial.
+
+## How AgroSat works
+
+```text
+NASA climate records       Local crop research        Farmer's field context
+IMERG + POWER              ICARDA + FAO              Water · Soil · Priorities
+       \                         |                          /
+        └────────────────────────┼─────────────────────────┘
+                                 ▼
+                    Explainable comparison engine
+                                 ▼
+                 A / B / C · Risks · Missing evidence
+                                 ▼
+                         What to check next
 ```
-D:\AgroSat
-├─ backend/
-│  ├─ app/
-│  │  ├─ main.py            HTTP API and validation boundary (FastAPI)
-│  │  ├─ schemas.py         Pydantic request/response contracts
-│  │  ├─ repository.py      Immutable NASA data parsing/quality checks
-│  │  ├─ service.py         Explainable rotation comparison logic
-│  │  ├─ impact.py          Qualitative six-factor assessments
-│  │  └─ evidence.py        Reference catalog and source IDs
-│  ├─ data/                 Original NASA JSON and provenance
-│  ├─ tests/                Automated scientific checks (pytest)
-│  └─ requirements.txt
-├─ frontend/
-│  ├─ src/
-│  │  ├─ App.tsx            Frontend orchestration and safe asynchronous API state
-│  │  ├─ components/        Reusable UI, rotations, Khorezm science and references
-│  │  ├─ styles/            Foundation, comparison and responsive jury polish
-│  │  ├─ scienceText.ts     Central scientific-code localization
-│  │  ├─ api.ts             Typed API client
-│  │  └─ types.ts           Frontend data contracts
-│  └─ public/imagery/       Original NASA GIBS map visualizations
-├─ research/                Preparatory materials (gitignored)
-├─ start_backend.ps1
-├─ start_frontend.ps1
-└─ start_local.ps1
-```
 
-The backend is the single authority for NASA data and scientific decisions; the frontend does not implement a competing scientific model.
+1. **Answer three easy questions** about irrigation, soil salinity and your main goal. “I don't know” is a valid answer.
+2. **Explore A, B and C**, including one clear potential advantage and one important caution per scenario.
+3. **Open the evidence when needed**: crop calendars, NASA observations, the six-factor assessment and original scientific sources.
+4. **Check the next action** before making a farm decision — such as confirming canal-water delivery or obtaining a soil test.
 
-## Local development (Windows PowerShell)
+### Key features
 
-Prerequisites: Python 3.12+ and Node 22+.
+- **EN / RU / UZ interface** with approachable wording, illustrations and light/dark themes.
+- **Original NASA time series** for rainfall, heat and frost exposure — including historical 75-day windows.
+- **Explainable, qualitative trade-offs** for water, soil cover, nutrients, pests, field operations and market considerations.
+- **Calendar checks** for contradictory or missing sowing/harvest dates, including the separate winter green-manure stage.
+- **Optional real field information**: farmer-reported irrigation amount, soil ECe, pH, sampling details and their source.
+- **Research transparency**: citations, data provenance, unknowns and limitations are accessible in the interface.
+
+## NASA data used
+
+The pilot climate point is near **Urgench, Khorezm (41.55° N, 60.62° E)**. Data cover **1 January 2000 – 31 December 2025**: **9,497 daily dates** per climate series.
+
+| Input | Product / parameter | How we use it |
+|---|---|---|
+| Precipitation | **NASA GPM IMERG**, `IMERG_PRECTOT`, delivered via **NASA POWER Daily API** | Historical daily, monthly and annual precipitation |
+| Temperature | **NASA POWER** `T2M`, `T2M_MAX`, `T2M_MIN` | Historical hot/frost days and seasonal exposure |
+| Vegetation imagery | **NASA GIBS / MODIS** regional images (2025) | Visual context only — **not** numerical field NDVI |
+
+**Data integrity:** Original NASA JSON inputs and their SHA-256 hashes are tracked in [the source manifest](backend/data/NASA_SOURCES_MANIFEST.json). The code recomputes climate summaries from those files rather than using invented numbers.
+
+**Illustrative result:** The archived NASA IMERG-derived 2025 annual precipitation at the pilot point is **94.47 mm**. That does **not** represent water delivered through irrigation canals.
+
+> **What AgroSat does not predict:** farm-specific yields, profit, irrigation savings, laboratory salinity, crop classification, field-level NDVI or the success of a planting decision. Satellite climate cells are regional estimates, not field measurements.
+
+## Research and source credits
+
+The figures and crop assumptions are **not made up**. This project builds on the following identifiable primary sources:
+
+| Source | Purpose | Original reference |
+|---|---|---|
+| **NASA POWER** | Daily meteorology and data access | [POWER Daily API documentation](https://power.larc.nasa.gov/docs/services/api/temporal/daily/) |
+| **NASA GPM / IMERG** | Precipitation product represented in POWER | [GPM IMERG](https://gpm.nasa.gov/data/imerg) · [POWER data-source methodology](https://power.larc.nasa.gov/docs/methodology/data/sources_meteorology/) |
+| **NASA GIBS** | MODIS imagery used for regional visualization | [Global Imagery Browse Services](https://gibs.earthdata.nasa.gov/) |
+| **ICARDA / CGIAR (2022)** | Early Durdona mung bean example in Khorezm (~70–75 days) | [Field-day report](https://mel.cgiar.org/reporting/download/hash/fba943f8c8f8343218dfcf56484114a8) |
+| **ICARDA / GIZ (2023)** | Wheat–mung bean–winter pea green manure–cotton research | [Original rotation research](https://mel.cgiar.org/reporting/download/hash/6b054f0772e3ad9f8cd6d8b3e76af588) |
+| **FAO EcoCrop** | Species-level preferences for `Vigna radiata` | [EcoCrop mung bean](https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2150) |
+| **FAO** | General crop water requirements and salinity references | [Crop water needs](https://www.fao.org/4/s2022e/s2022e07.htm) · [Salt tolerance](https://www.fao.org/4/T0667E/t0667e07.htm) |
+| **Water (2018)** | Published regional water / saline-soil context for Khorezm | [Khorezm study](https://www.mdpi.com/2073-4441/10/2/208) |
+| **Uzbekistan Ministry of Agriculture** | Public context, not verified individual farm measurements | [Open-data registry](https://gov.uz/ru/agro/pages/ochiq-ma-lumotlar-reyestri) |
+
+**Full bibliography, source-to-claim mapping and image/software credits:** [DATA_SOURCES_AND_CREDITS.md](docs/DATA_SOURCES_AND_CREDITS.md) · [Scientific traceability](docs/SOURCE_TRACEABILITY.md).
+
+Published values are indicative and must be interpreted within their original scope; for example, Durdona's reported crop duration is **not** a universal maturity period for every mung bean variety.
+
+## Technology
+
+| Frontend | Backend | Quality and data |
+|---|---|---|
+| React · TypeScript · Vite · Lucide | Python · FastAPI · Pydantic | NASA JSON · pytest · Chrome browser checks |
+| Responsive design · EN/RU/UZ · Light/dark | Validated REST endpoints · Source tracing | GitHub Actions · SHA-256 provenance |
+
+The backend is the **single scientific decision authority**. UI translations never change the underlying calculations.
+
+## Run locally
+
+**Prerequisites:** Python 3.12+ and Node.js 22+.
 
 ```powershell
-cd D:\AgroSat
+git clone https://github.com/thezxcc/AgroSat-Uzbekistan.git
+cd AgroSat-Uzbekistan
+
 py -m venv backend\.venv
 backend\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+
 cd frontend
-npm.cmd install
+npm.cmd ci
 cd ..
+
 .\start_local.ps1
 ```
 
-Open **http://127.0.0.1:5173**. API docs: http://127.0.0.1:8000/docs.
+Open **http://127.0.0.1:5173/** in the browser. Interactive API docs: **http://127.0.0.1:8000/docs**.
 
-For manual startup in separate PowerShell windows:
-
-```powershell
-cd D:\AgroSat
-.\start_backend.ps1
-```
+**Run every local quality check** (with both servers running):
 
 ```powershell
-cd D:\AgroSat
-.\start_frontend.ps1
-```
-
-Run automated checks:
-
-```powershell
-cd D:\AgroSat\backend
-.\.venv\Scripts\python.exe -m pytest -q
-cd ..\frontend
-npm.cmd run build
-npm.cmd run lint
-```
-
-## API
-
-- `GET /api/health` — data readiness and observation count.
-- `GET /api/climate/{year}` — real annual NASA precipitation, extreme-heat and frost counts.
-- `POST /api/compare` — illustrative 75-day crop window + A/B/C comparison with uncertainties.
-- `GET /api/sources` — core provenance URLs.
-
-Climate figures are calculated from source data, not hardcoded. The **NASA IMERG 2025 annual sum = 94.47 mm** is an automated regression test.
-
-## Scientific integrity
-
-- We compare **A** wheat → fallow → cotton, **B** wheat → mung bean → cotton and **C** wheat → mung bean → green manure → cotton.
-- A is a *hypothetical regional research baseline*, not necessarily the user's current rotation.
-- The form allows an arbitrary farmer-supplied current rotation without asserting its quantitative outcomes.
-- B is a research alternative; do not imply the same published study measured all three equally.
-- Missing laboratory salinity, soil properties, irrigation supply or yield are shown as **unknown**, never estimated from a satellite climate cell.
-- 75-day crop development is a simplified assumption, not a cultivar-calibrated phenology model.
-- No claims of yield gains, profits, or percentage water savings are generated without measured evidence.
-- Satellite precipitation is **not** water delivered through irrigation channels.
-- MODIS NASA GIBS PNGs are contextual visualizations, not calibrated numeric NDVI raster data.
-
-Primary public sources: [NASA GPM/IMERG](https://gpm.nasa.gov/data/imerg), [NASA POWER](https://power.larc.nasa.gov/), [NASA Earthdata](https://earthdata.nasa.gov/), [ICARDA](https://repo.mel.cgiar.org/), [FAO](https://www.fao.org/land-water/).
-
-## AI disclosure
-
-ChatGPT (OpenAI) was used as a development assistant for TypeScript, Python, testing, project documentation and code review. No generative AI service is called from this application. All outputs and scientific claims require human review.
-
-## Publishing
-
-GitHub Pages is suitable for the static React build **but does not run Python**. A public demo therefore requires a separate FastAPI host (e.g. Render, Fly.io or another Python-capable provider) and `VITE_API_URL` pointing to its HTTPS API endpoint. API CORS must allow the exact deployed frontend origin. Do **not** push secrets or any private files. Configure both services and verify public requests before submitting.
-
-The official NASA project submission and proof of publication remain separate actions and have **not yet been performed**.
-
-License for original project source: MIT (see LICENSE). Dataset and imagery terms remain with their original providers.
-
-## Multilingual interface
-The website starts in **English on every fresh visit**. Use the top-right language selector to switch to **Русский** or **O‘zbekcha (Latin script)**. Translation covers the form, climate data, graphs, six agronomic comparison factors, scientific reasons, sources, glossary and errors; the Python API returns stable reason codes so scientific calculations do not depend on language.
-
-## Extra NASA-specific decision criteria
-Each rotation has a qualitative, evidence-limited analysis of:
-1. irrigation and water risk;
-2. living soil cover;
-3. soil nutrients and organic residues;
-4. pests and diseases;
-5. field operations and machinery;
-6. additional harvest and local market.
-
-These are **conditional or unknown assessments**, never fabricated scores. For a user-entered current rotation the system does not infer details from unstructured text and marks the dimensions unknown.
-
-## Complete local checks
-After starting both servers using `.\start_local.ps1`, run:
-
-```powershell
-cd D:\AgroSat
 .\check_all.ps1
 ```
 
-The current unified quality gate verifies **93 Python scientific/API tests**, TypeScript lint and production build, **1,128 translated message instances** (English/Russian/Uzbek) and real Chrome suites covering NASA source integrity, crop calendars, water risks, delayed API requests, scientific evidence, screen widths down to 320 px, and all 18 matrix explanations. It checks that fresh visits default to English, rejects invalid rotation requests, and confirms no stale farm result can overwrite newer inputs. Local PASS is not a field-validated yield forecast or proof of NASA submission.
+The local gate includes **93 Python tests**, **1,128 localized-message checks**, TypeScript build/lint, scientific regressions, Chrome user journeys, responsive checks and a nested-hosting asset check. These are **local test results**, not evidence of public deployment, field effectiveness or official NASA judging status.
 
-Review `docs/USER_GUIDE_RU.md`, `docs/ARCHITECTURE.md`, and `docs/LOCAL_PASS_REPORT.md`.
+## Deployment notes
 
-## Data integrity
-The NASA input file hashes are frozen in `backend/data/NASA_SOURCES_MANIFEST.json`. The backend tests prove both files match their original SHA-256 checksums and verify 9,497 complete daily dates without missing precipitation or temperature measurements. The monthly rainfall chart is recomputed from those genuine daily values. This does **not** validate accuracy against every physical field in Khorezm.
+GitHub Pages can serve the **static React frontend**, but not Python/FastAPI. A working public demo requires a separately hosted **HTTPS backend** and matching configuration:
 
-## Source traceability inside the app
-Click **Where does this assessment come from?** (RU: «Откуда взяты эти выводы?», UZ: «Bu xulosalar qayerdan olingan?») under each rotation, or the similar section beneath the rainfall graph. The citations distinguish regional NASA observations/reanalysis, ICARDA regional research and user-provided facts. Farmer-entered rotations are **not** presented as verified studies. Detailed provenance: `docs/SOURCE_TRACEABILITY.md`.
+- Set `VITE_BASE_PATH=/AgroSat-Uzbekistan/` for a GitHub Pages project subpath.
+- Build with `VITE_API_URL=https://YOUR_PUBLIC_BACKEND`.
+- Set `CORS_ORIGINS=https://thezxcc.github.io` on the FastAPI host (or use the actual frontend origin).
+- Confirm all requests and NASA imagery work in an incognito browser.
 
-## User-selected satellite dashboard design
+See [deployment checklist](DEPLOYMENT_CHECKLIST.md) and [optional Render backend configuration](render.yaml). **No public live-demo URL is claimed until it has been deployed and tested.**
 
-The `design-v2` interface uses shared semantic CSS tokens for both light (milky cream/sage) and dark (deep blue/green) themes. A theme toggle next to the language selector persists the preferred theme; English remains the default language on each fresh visit. The hero shows authentic NASA MODIS imagery **without fake field NDVI numbers**. A side-by-side six-factor matrix makes scientific uncertainty across rotations A/B/C visible.
+## Project materials
 
-Design documentation: `docs/DESIGN_V2.md`. Run `.\check_all.ps1` to verify both themes and scientific regression tests locally.
+- **[Seven-slide English NASA presentation (PDF)](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pdf)**
+- **[Editable PowerPoint](presentation/AgroSat_Uzbekistan_NASA_2026_FINAL.pptx)**
+- **[Methodology and scientific traceability](docs/SOURCE_TRACEABILITY.md)**
+- **[Code / scientific audit](docs/COMPLETE_NASA_CODE_COMPLIANCE_AUDIT_20261115_RU.md)**
 
-## NASA jury UX polish — v2.1
+## Responsible use and attribution
 
-The homepage now places three scientifically grounded rotation previews A/B/C immediately after the NASA data status instead of burying the main function below the annual chart. Each card links to its detailed evidence and warnings; previously calculated output is marked stale when farmer inputs change. Larger typography, wider content, prominent climate units, direct Climate & rainfall navigation, accessible contrast and preserved light/dark plus EN/RU/UZ modes make the live demo easier. NASA/ICARDA citations and no-fabricated-data safeguards remain unchanged. See `docs/JURY_UX_POLISH.md` for architecture and the NASA judge demo workflow. Run `.\check_all.ps1` before any merge or deployment.
+AgroSat is a **research and educational prototype**. It cannot replace local agronomic expertise, laboratory soil measurements or confirmed irrigation records. Farmers should validate constraints before planting.
 
-## 14 November 2026 — architecture, NASA and Khorezm scientific audit
+**AI assistance:** OpenAI ChatGPT supported research organization, code drafting and review, translations, automated tests, documentation and presentation development. **No generative AI inference service is embedded in the application**. The scientific outputs use the stored climate observations and explicit software rules.
 
-The codebase was independently rechecked for request/response contracts, separation of concerns, input validation, failure handling, React asynchronous race conditions, scientific provenance, and supply-chain dependencies. The existing NASA JSON was not modified.
+The original project source is released under the [MIT License](LICENSE). NASA, CGIAR/ICARDA, FAO and other third-party datasets, images and research retain their original ownership and usage terms. AgroSat is a student-led project **created for** NASA Space Apps Challenge, not an official NASA product or endorsement.
 
-Important enhancements:
-- Reject undefined rotation IDs, invalid sowing dates, unexpected API request fields, and blank farmer-specified crop rotations. Response schema validates both annual/monthly climate and evidence endpoints.
-- Suppress stale API results when farm parameters change while a comparison request is in flight; support continued farm analysis if the evidence registry is unavailable. Automated Chrome race tests reproduce these cases.
-- Centralize scientific explanation translation; split the former monolithic CSS into three ordered stylesheet modules.
-- Add Khorezm-specific scientific context, primary ICARDA papers, Uzbek Ministry open-data registry and links to the NASA POWER methodology. Correct the calendar interpretation: winter-pea green manure is grown after mung bean harvest, **not inside** the same 75-day window.
-- Expand the local quality gate to **49 Python tests, 783 EN/RU/UZ translation checks, 7 API scenarios, four Chrome suites**, TS production build and zero-warning lint.
-- Research limitations remain: no measured ECe, actual irrigation volume, validated crop-specific yield/profit model, or numeric field NDVI. This is an explainable screening prototype, not a calibrated farm forecast.
+---
 
-Full reports:
-- `docs/CODE_AND_UNIVERSAL_READINESS_AUDIT_20261114_RU.md` — architecture audit, NASA Universal and Field Shift compliance assessment, priorities and risks.
-- `docs/KHOREZM_SCIENTIFIC_VERIFICATION_20261114_RU.md` — NASA POWER/IMERG provenance, ICARDA 2022/2023, Uzbekistan open data, scientific limitations.
+<div align="center">
 
-**Universal Event:** two registered participants are required for Global Judging; the fact that this application works locally does not satisfy registration, public demonstration, NASA Project Tab, or competition submission. No GitHub origin has been linked or public deployment performed.
+**Built in Uzbekistan for clearer, evidence-informed farming decisions. 🌱**
 
-## 14 November evening — AgroSat science v3 / NASA jury preparation
+*Satellite observations can reveal climate patterns. Responsible decisions begin with knowing what they cannot reveal.*
 
-New evidence-limited agricultural features added **without replacing original NASA inputs or the existing design**:
-
-- User-entered, structured current crop rotation: crop names and optional actual sowing/harvest dates for up to 8 stages. The old free-text baseline remains available; unsupported agricultural impacts remain UNKNOWN.
-- Chronological B/C crop calendar: wheat harvest → mung bean sowing/harvest → optional winter-pea green manure → cotton next year. Explicit states: dates missing, contradictory sequence, merely chronological sequence, cultivar duration needs review. **Chronology alone never means agronomic feasibility.**
-- Optional user-origin field data: actual/reported irrigation in **m³/ha with period/source**, laboratory or reported soil ECe in **dS/m**, pH, sample date/depth; no automatic conversion from rainfall to delivered canal irrigation and no spurious cultivar yield thresholds.
-- Curated four-crop reference catalog `GET /api/crops`: FAO wheat/cotton whole-season water-need ranges, FAO EcoCrop mung bean species preferences, and ICARDA's Durdona 70–75-day example. References are cited as **indicative and not site-calibrated**. No undocumented water figure is assigned to Durdona or winter pea.
-- New **real 75-day IMERG precipitation exposure**: mean and historical min/max from 26 original NASA years, next to heat/frost indicators, explicitly not canal irrigation.
-- Five browser smoke suites now include invalid/partial calendar, no-water risk, field measurement origin, structured baseline, source links, theme/language and mobile viewport checks. **74 Python tests / 1,017 EN-RU-UZ structural checks / 7 API scenarios / 1,233 code references — local PASS.**
-- NASA Universal demo materials are prepared *locally*, not published: exact **7 English PowerPoint slides**, builder `presentation/build_slides.ps1`; actual slideshow at `artifacts/AgroSat_NASA_2026_7slides.pptx`. English Project Tab text with citation/AI-tool disclosure: `docs/NASA_SUBMISSION_DRAFT_EN_2026.md`. Documentation of potential verified additional satellite sources and limitations: `docs/SATELLITE_DATA_FEASIBILITY_20261114_RU.md`.
-
-**Publication and NASA submission deliberately deferred to Nov 15 per team instruction.** GitHub remote and public HTTPS links remain unconfigured; NASA Project Tab still awaits team owners' actions and verification that both participants are formally registered in the same Universal Event.
-
-## Phase 1 scientific calendar safety audit (2026-11-14)
-
-Five additional API regressions and a dedicated Chrome scenario found and resolved a real issue: a farmer-defined rotation could hide a known date conflict behind a missing intermediate stage. The application now marks custom baseline A as `calendar-conflict` when known dates contradict one another and never displays negative mung bean growing durations. All six browser suites, 79 Python tests, 1,032 localization checks, and 1,233 live scientific-code references pass. Original NASA JSON remains unmodified. See `docs/STEPWISE_COMPLETION_ROADMAP_20261114_RU.md` for the previously agreed stages followed by optional jury enhancements, and `docs/PHASE1_SCIENCE_CALENDAR_PASS_20261114_RU.md` for the concrete failing and passing regressions.
-
-## Phase 2 (2026-11-15) — individual FAO / ICARDA source trace for each crop metric
-
-Wheat water 450–650 mm and cotton water 700–1300 mm are **FAO ETcrop indicative whole-season ranges**, never actual irrigation delivered. Mung bean Durdona 70–75 days is from **ICARDA Khorezm 2022**; Vigna radiata 21–36°C and soil pH 5.5–6.2 are **FAO EcoCrop species-level reference ranges**, not Durdona cultivar thresholds. Winter-pea green manure has **no fabricated seasonal water or crop duration value**. Historical FAO cotton ECe 7.7 dS/m is a **reference yield-decline onset**, not a field-specific safe cutoff.
-
-The typed `/api/crops` output now provides `metric_source_ids` for each documented field; direct source links render alongside numeric values in EN/RU/UZ and are regression-tested in Chrome. The integrated quality gate on the active code now checks **81 Python tests, 1,035 translations, 1,233 API science references and 7 Chrome suites**, production TypeScript build and zero-warning lint. See `docs/PHASE2_CROP_EVIDENCE_PASS_20261115_RU.md` for primary URLs and explicit limits. The original NASA climate datasets remain unchanged.
-
-## Phase 3 (2026-11-15): field data provenance and measurement consistency
-
-The field-input audit now distinguishes **farmer estimates**, **user-reported metered irrigation**, **user-reported laboratory soil analysis**, **research example A**, and **user-supplied rotation A**, without claiming independent validation. A new typed `field_evidence` section in `/api/compare` attaches stable scientific codes and sources to soil, irrigation and rotation statements. The comparison UI displays these checks in EN/RU/UZ and highlights data that require reconciliation. A high/low salinity category is **not** derived automatically from ECe, and irrigation availability is not equated to a recorded m³/ha amount. Missing laboratory date/depth produces a review notice rather than a fabricated result.
-
-React form validation now rejects non-finite and out-of-range field values before they can silently become `null` in JSON. The scientific climate calculations and original NASA files have **not changed**. The unified local QA gate has **92 Python tests, 1,095 translation checks, 12 live API scenarios / 2,277 localized scientific references, eight Chrome suites plus one frontend numeric-bound test**, with 0 JS errors and a clean TS build. One third-party Starlette deprecation warning remains. The Stage 3 report is `docs/PHASE3_FIELD_EVIDENCE_PASS_20261115_RU.md`; the updated roadmap is `docs/STEPWISE_COMPLETION_ROADMAP_20261114_RU.md`.
+</div>
