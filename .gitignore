@@ -19,3 +19,7 @@ artifacts/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Python quickstart bytecode
+__pycache__/
+*.pyc

@@ -20,6 +20,22 @@
 
 ![AgroSat website — NASA-informed farmer helper and original satellite context](docs/images/agrosat-home.png)
 
+## 🚀 Run it yourself — one command
+
+**No NASA API key, account or external database required.** The repository includes the historical NASA data used by this prototype.
+
+| Your computer | What to run | Open in your browser |
+|---|---|---|
+| **Docker installed (Windows / macOS / Linux)** | `docker compose up --build` | **http://localhost:8080** |
+| **Windows, without Docker** | Double-click **`START_HERE.bat`** | **http://127.0.0.1:5173** |
+| **macOS / Linux, without Docker** | `python3 run.py` | **http://127.0.0.1:5173** |
+
+For Docker, run the command in the directory you cloned. For native setup, install **Python 3.12+** and **Node.js 22.12+ / 24+** first; the starter will create an isolated Python environment and run `pip` and `npm ci` automatically. Initial installation needs internet; subsequent starts reuse installed dependencies. Press **Ctrl+C** to stop.
+
+**[Clone/download instructions, platform requirements and troubleshooting →](QUICKSTART.md)**
+
+> GitHub Pages by itself does not run FastAPI. The commands above start **both** the website and its scientific API. A publicly hosted demo needs a separate deployed API or a single-host deployment.
+
 ## The idea
 
 **What should a farmer grow after harvesting wheat?**
@@ -116,7 +132,10 @@ Published values are indicative and must be interpreted within their original sc
 
 The backend is the **single scientific decision authority**. UI translations never change the underlying calculations.
 
-## Run locally
+## Manual development setup (optional)
+
+**Most users should use the quick-start above**; the steps below are for developers who want to manage the two servers themselves.
+
 
 **Prerequisites:** Python 3.12+ and Node.js 22+.
 
